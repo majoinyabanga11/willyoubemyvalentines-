@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="stle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Cute floating hearts for a playful, romantic effect -->
+        <div class="floating-hearts" aria-hidden="true">
+            <span class="heart">💖</span>
+            <span class="heart">💕</span>
+            <span class="heart">💗</span>
+            <span class="heart">💞</span>
+            <span class="heart">💘</span>
+        </div>
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+        <!-- Memories gallery: uses images already in project directory. -->
+        <!-- Memories are kept in the DOM for the slideshow but hidden during the question phase -->
+        <section class="memories" aria-label="Our memories" aria-hidden="true">
+            <h2>Our Memories</h2>
+            <div class="gallery">
+                <figure>
+                    <img src="7c659c82-33e5-4afd-82d6-b1e0b0573fe2.jpg" alt="Memory 1" loading="lazy">
+                    <figcaption>❤️</figcaption>
+                </figure>
+                <figure>
+                    <img src="fqs%202025-12-06%20122820.149.jpg" alt="Memory 2" loading="lazy">
+                    <figcaption>☕️</figcaption>
+                </figure>
+                <figure>
+                    <img src="fqs%202025-12-06%20141844.077.jpg" alt="Memory 3" loading="lazy">
+                    <figcaption>🌅</figcaption>
+                </figure>
+                <figure>
+                    <img src="fqs%202025-12-21%20201706.456.jpg" alt="Memory 4" loading="lazy">
+                    <figcaption>😂</figcaption>
+                </figure>
+                <!-- Removed: Snowy night and Road trip per request -->
+                <figure>
+                    <img src="hoga%202025-12-21%20001344.335.jpg" alt="Memory 7" loading="lazy">
+                    <figcaption>💑</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Note wrapper: featured photos will overlap the love-note for a scrapbook look -->
+        <div class="note-wrap">
+            <div class="featured-photos" aria-hidden="true">
+                <div class="fp-grid">
+                    <figure><img src="7c659c82-33e5-4afd-82d6-b1e0b0573fe2.jpg" alt="photo1"></figure>
+                    <figure><img src="fqs%202025-12-06%20122820.149.jpg" alt="photo2"></figure>
+                    <figure><img src="fqs%202025-12-06%20141844.077.jpg" alt="photo3"></figure>
+                    <figure><img src="fqs%202025-12-21%20201706.456.jpg" alt="photo4"></figure>
+                    <figure><img src="hoga%202025-12-21%20001344.335.jpg" alt="photo5"></figure>
+                </div>
+            </div>
+
+            <!-- Love note: hidden until the gallery is revealed -->
+            <div class="love-note" aria-hidden="true">
+                <p class="love-text">I just wanted to take a moment to tell you how much I love you, Daisy. You completely transformed the way I see love and relationships. You came into my life and brought so much light, peace, and happiness—things I never even knew I needed. You are truly the best thing that happened to me last year, and every single day you continue to be the highlight of my day. Your love motivates me, comforts me, and inspires me to become a better person. I’m endlessly grateful for you and for everything we share together. ❤️</p>
+                <!-- Decorative flourish SVG under the love-note -->
+                <svg class="flourish" width="360" height="60" viewBox="0 0 360 60" aria-hidden="true" focusable="false">
+                    <path d="M10 40 C70 10, 140 10, 180 40 C220 70, 290 70, 350 40" fill="none" stroke="#ff5aa3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+                    <path d="M40 36 C80 24, 120 24, 160 36" fill="none" stroke="#ffd1e8" stroke-width="1.5" opacity="0.9" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
+
+        <!-- Celebration overlay (plays first when Yes is clicked) -->
+        <div id="celebrationOverlay" class="celebration-overlay" aria-hidden="true">
+            <div class="celebration-inner">
+                <div class="celebration-heart">❤️</div>
+                <h3 class="celebration-text">I knew you'd say yes</h3>
+            </div>
+            <div class="celebration-gif">
+                <!-- Use the second cat animation (from yes_page.html) -->
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="celebration cat" loading="eager">
+            </div>
+            <!-- SVG fireworks for a cleaner, scalable effect -->
+            <svg class="fireworks-svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <g class="burst" transform="translate(120,260)">
+                    <circle class="b-dot big" r="4" cx="0" cy="0"/>
+                    <g class="rays">
+                        <line x1="0" y1="0" x2="0" y2="-1"/>
+                        <line x1="0" y1="0" x2="0.78" y2="-0.62"/>
+                        <line x1="0" y1="0" x2="0.98" y2="0.2"/>
+                        <line x1="0" y1="0" x2="0.62" y2="0.78"/>
+                        <line x1="0" y1="0" x2="-0.2" y2="0.98"/>
+                        <line x1="0" y1="0" x2="-0.78" y2="0.62"/>
+                        <line x1="0" y1="0" x2="-0.98" y2="-0.2"/>
+                        <line x1="0" y1="0" x2="-0.62" y2="-0.78"/>
+                    </g>
+                </g>
+                <g class="burst" transform="translate(380,140)">
+                    <circle class="b-dot" r="4" cx="0" cy="0"/>
+                    <g class="rays">
+                        <line x1="0" y1="0" x2="0" y2="-1"/>
+                        <line x1="0" y1="0" x2="0.7" y2="-0.7"/>
+                        <line x1="0" y1="0" x2="0.96" y2="0.28"/>
+                        <line x1="0" y1="0" x2="0.45" y2="0.9"/>
+                        <line x1="0" y1="0" x2="-0.28" y2="0.96"/>
+                        <line x1="0" y1="0" x2="-0.78" y2="0.62"/>
+                    </g>
+                </g>
+                <g class="burst" transform="translate(300,300)">
+                    <circle class="b-dot small" r="3" cx="0" cy="0"/>
+                    <g class="rays">
+                        <line x1="0" y1="0" x2="0" y2="-1"/>
+                        <line x1="0" y1="0" x2="0.5" y2="-0.86"/>
+                        <line x1="0" y1="0" x2="0.9" y2="0.43"/>
+                        <line x1="0" y1="0" x2="-0.5" y2="0.86"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Slideshow removed (not used) -->
+    </div>
+    <script src="script.js"></script>
+    <!-- Dim overlay used when an image is enlarged to focus the selected image -->
+    <div id="dimOverlay" class="dim-overlay" aria-hidden="true"></div>
+    <!-- Centered modal for enlarged image -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button class="modal-close" aria-label="Close">×</button>
+            <img id="modalImg" src="" alt="" />
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+</body>
+</html>

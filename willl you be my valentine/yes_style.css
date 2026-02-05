@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '🎉';
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    font-size: 2em;
+    animation: float 5s infinite;
+}
+
+body::after {
+    content: '🥳';
+    position: absolute;
+    top: 25%;
+    right: 20%;
+    font-size: 1.8em;
+    animation: float 7s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.header_text {
+    font-size: 3em;
+    color: #4caf50;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gif_container img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .header_text {
+    font-size: 2em;
+  }
+  
+  .gif_container img {
+    max-width: 300px;
+  }
+}
